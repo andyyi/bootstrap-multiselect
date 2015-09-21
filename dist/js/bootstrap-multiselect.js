@@ -50,9 +50,15 @@
 
             init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
                 var $element = $(element);
-                var config = ko.toJS(valueAccessor());
+                var configs = {
+                    enableFiltering: allBindings.get('enableFiltering'),
+                    includeSelectAllOption: allBindings.get('includeSelectAllOption'),
+                    maxHeight: allBindings.get('maxHeight'),
+                    buttonWidth: allBindings.get('buttonWidth'),
+                    enableCaseInsensitiveFiltering: allBindings.get('enableCaseInsensitiveFiltering')
+                };
 
-                $element.multiselect(config);
+                $element.multiselect(configs);
 
                 if (allBindings.has('options')) {
                     var options = allBindings.get('options');
